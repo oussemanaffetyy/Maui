@@ -19,16 +19,13 @@ public class MainViewModel : BaseGalleryViewModel
         new SectionModel(typeof(ConvertersGalleryPage), "Converters", Color.FromArgb("#EA005E"),
             "Converters let you convert bindings of a certain type to a different value, based on custom logic"),
 
-        new SectionModel(typeof(ViewsGalleryPage), "Views", Color.FromArgb("#EA005E"),
-            "Views"),
-    };
-		new SectionModel(typeof(ConvertersGalleryPage), "Converters", Color.FromArgb("#EA005E"),
-			"Converters let you convert bindings of a certain type to a different value, based on custom logic"),
-
 		new SectionModel(typeof(ExtensionsGalleryPage), "Extensions", Color.FromArgb("#00EA56"),
-			"Extenions lets you add methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type."),
+			"Extensions lets you add methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type."),
 
 		new SectionModel(typeof(AlertsGalleryPage), "Alerts", Color.FromArgb("#EF6950"),
 			"Alerts allow you display alerts to your user"),
+
+        new SectionModel(typeof(ViewsGalleryPage), "Views", Color.FromArgb("#EA005E"),
+            "Views"),
 	};
 }

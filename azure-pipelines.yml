@@ -36,7 +36,7 @@ jobs:
   - job: build_windows
     displayName: Build Windows Library
     pool:
-      vmImage: windows-latest
+      vmImage: windows-2022
     steps:
       - task: UseDotNet@2
         displayName: 'Install .NET SDK'
@@ -86,10 +86,12 @@ jobs:
             dotnet restore $(PathToCommunityToolkitCsproj)
             dotnet restore $(PathToCommunityToolkitSampleCsproj)
             dotnet restore $(PathToCommunityToolkitUnitTestCsproj)
-      - task: CmdLine@2
-        displayName: 'Build Community Toolkit'
+      - task: VSBuild@1
+        displayName: 'Build and pack Community Toolkit'
         inputs:
-          script: 'dotnet build $(PathToCommunityToolkitCsproj) -c Release'
+          solution: '$(PathToSolution)'
+          configuration: 'Release'
+          msbuildArgs: '/restore -t:pack -p:PackageVersion=$(NugetPackageVersion) -p:Version=$(NugetPackageVersion) /p:OutputPath=$(Build.ArtifactStagingDirectory)/nuget -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg'     
       - task: CmdLine@2
         displayName: 'Run Unit Tests'
         inputs:
@@ -98,10 +100,6 @@ jobs:
         displayName: 'Build Community Toolkit Sample'
         inputs:
           script: 'dotnet build $(PathToCommunityToolkitSampleCsproj) -c Release'
-      - task: CmdLine@2
-        displayName: Pack Community Toolkit NuGets
-        inputs:
-          script: 'dotnet pack $(PathToCommunityToolkitCsproj) -c Release -p:PackageVersion=$(NugetPackageVersion) -p:Version=$(NugetPackageVersion) --output $(Build.ArtifactStagingDirectory)/nuget -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg'
       # Sign NuGet Packages
       - task: PowerShell@2
         displayName: Authenticode Sign Packages
