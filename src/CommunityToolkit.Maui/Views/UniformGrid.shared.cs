@@ -13,18 +13,13 @@ namespace CommunityToolkit.Maui.Views;
 /// </summary>
 public class UniformGrid : Grid, ILayoutManager
 {
-	double childWidth;
-
-	double childHeight;
+	double _childWidth, _childHeight;
 
 	/// <summary>
 	/// Assign this as a LayoutManager
 	/// </summary>
 	/// <returns><see cref="ILayoutManager"/></returns>
-	protected override ILayoutManager CreateLayoutManager()
-	{
-		return this;
-	}
+	protected override ILayoutManager CreateLayoutManager() => this;
 
 	/// <summary>
 	/// Backing BindableProperty for the <see cref="MaxRows"/> property.
@@ -41,8 +36,8 @@ public class UniformGrid : Grid, ILayoutManager
 	/// </summary>
 	public int MaxRows
 	{
-		get { return (int)GetValue(MaxRowsProperty); }
-		set { SetValue(MaxRowsProperty, value); }
+		get => (int)GetValue(MaxRowsProperty);
+		set => SetValue(MaxRowsProperty, value);
 	}
 
 	/// <summary>
@@ -50,8 +45,8 @@ public class UniformGrid : Grid, ILayoutManager
 	/// </summary>
 	public int MaxColumns
 	{
-		get { return (int)GetValue(MaxColumnsProperty); }
-		set { SetValue(MaxColumnsProperty, value); }
+		get => (int)GetValue(MaxColumnsProperty);
+		set => SetValue(MaxColumnsProperty, value);
 	}
 
 	/// <summary>
@@ -62,10 +57,10 @@ public class UniformGrid : Grid, ILayoutManager
 	public Size ArrangeChildren(Rectangle rectangle)
 	{
 		Measure(rectangle.Width, rectangle.Height, MeasureFlags.None);
-		var columns = GetColumnsCount(Children.Count, rectangle.Width, childWidth);
+		var columns = GetColumnsCount(Children.Count, rectangle.Width, _childWidth);
 		var rows = GetRowsCount(Children.Count, columns);
 		var boundsWidth = rectangle.Width / columns;
-		var boundsHeight = childHeight;
+		var boundsHeight = _childHeight;
 		var bounds = new Rectangle(0, 0, boundsWidth, boundsHeight);
 		var count = 0;
 
@@ -94,23 +89,24 @@ public class UniformGrid : Grid, ILayoutManager
 	{
 		foreach (var child in Children)
 		{
-			if (child.Visibility != Visibility.Visible)
+			if (child.Visibility is not Visibility.Visible)
 				continue;
 
 			var sizeRequest = child.Measure(double.PositiveInfinity, double.PositiveInfinity);
-			childHeight = sizeRequest.Height;
-			childWidth = sizeRequest.Width;
+			_childHeight = sizeRequest.Height;
+			_childWidth = sizeRequest.Width;
 		}
 
-		var columns = GetColumnsCount(Children.Count, widthConstraint, childWidth);
+		var columns = GetColumnsCount(Children.Count, widthConstraint, _childWidth);
 		var rows = GetRowsCount(Children.Count, columns);
-		return new Size(columns * childWidth, rows * childHeight);
+
+		return new Size(columns * _childWidth, rows * _childHeight);
 	}
 
 	int GetColumnsCount(int visibleChildrenCount, double widthConstraint, double maxChildWidth)
 		=> Math.Min(double.IsPositiveInfinity(widthConstraint)
-				   ? visibleChildrenCount
-				   : Math.Min((int)(widthConstraint / maxChildWidth), visibleChildrenCount), MaxColumns);
+					   ? visibleChildrenCount
+					   : Math.Min((int)(widthConstraint / maxChildWidth), visibleChildrenCount), MaxColumns);
 
 	int GetRowsCount(int visibleChildrenCount, int columnsCount)
 		=> Math.Min((int)Math.Ceiling((double)visibleChildrenCount / columnsCount), MaxRows);
