@@ -12,6 +12,6 @@ public class ViewsGalleryViewModel : BaseGalleryViewModel
         new SectionModel(
             typeof(UniformGridPage),
             nameof(UniformGrid),
-            "UniformGrid")
+            "A Grid where all rows and columns have the same size")
     };
 }

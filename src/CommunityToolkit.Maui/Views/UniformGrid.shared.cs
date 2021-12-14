@@ -7,7 +7,7 @@ using Microsoft.Maui.Layouts;
 namespace CommunityToolkit.Maui.Views;
 
 /// <summary>
-/// The UniformGrid is just like the Grid, with the possibility of multiple rows and columns, but with one important difference:
+/// The <see cref="UniformGrid"/> is just like the <see cref="Grid"/>, with the possibility of multiple rows and columns, but with one important difference:
 /// All rows and columns will have the same size.
 /// Use this when you need the Grid behavior without the need to specify different sizes for the rows and columns.
 /// </summary>

@@ -26,6 +26,6 @@ public class MainViewModel : BaseGalleryViewModel
 			"Alerts allow you display alerts to your user"),
 
         new SectionModel(typeof(ViewsGalleryPage), "Views", Color.FromArgb("#EA005E"),
-            "Views"),
+            "Views are custom UI Controls created for .NET MAUI"),
 	};
 }
