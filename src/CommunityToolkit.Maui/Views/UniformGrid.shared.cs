@@ -57,6 +57,7 @@ public class UniformGrid : Grid, ILayoutManager
 	public Size ArrangeChildren(Rectangle rectangle)
 	{
 		Measure(rectangle.Width, rectangle.Height, MeasureFlags.None);
+
 		var columns = GetColumnsCount(Children.Count, rectangle.Width, _childWidth);
 		var rows = GetRowsCount(Children.Count, columns);
 		var boundsWidth = rectangle.Width / columns;
