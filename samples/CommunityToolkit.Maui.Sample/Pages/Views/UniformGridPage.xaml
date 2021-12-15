@@ -5,36 +5,37 @@
     xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
     xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
     x:Class="CommunityToolkit.Maui.Sample.Pages.Views.UniformGridPage">
-    <ContentView Padding="{StaticResource ContentPadding}">
-        <VerticalStackLayout>
+    <VerticalStackLayout Padding="{StaticResource ContentPadding}">
 
-            <Label Text="UniformGrid with default settings"/>
-            <mct:UniformGrid>
-                <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
-            </mct:UniformGrid>
-            
-            <Label Text="UniformGrid with MaxColumns=1 and MaxRows=1"/>
-            <mct:UniformGrid MaxColumns="1" MaxRows="1">
-                <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
-            </mct:UniformGrid>
-            
-            <Label Text="UniformGrid with MaxRows=1"/>
-            <mct:UniformGrid MaxRows="1">
-                <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
-            </mct:UniformGrid>
+        <Label Text="The UniformGrid creates a grid where each Row and Column will have the same size" 
+                Margin="0,0,0,12"/>
 
-            <Label Text="UniformGrid with MaxColumns=1"/>
-            <mct:UniformGrid MaxColumns="1">
-                <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
-                <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
-            </mct:UniformGrid>
-        </VerticalStackLayout>
-    </ContentView>
+        <Label Text="UniformGrid with default settings"/>
+        <mct:UniformGrid>
+            <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
+        </mct:UniformGrid>
+        
+        <Label Text="UniformGrid with MaxColumns=1 and MaxRows=1"/>
+        <mct:UniformGrid MaxColumns="1" MaxRows="1">
+            <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
+        </mct:UniformGrid>
+        
+        <Label Text="UniformGrid with MaxRows=1"/>
+        <mct:UniformGrid MaxRows="1">
+            <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
+        </mct:UniformGrid>
+
+        <Label Text="UniformGrid with MaxColumns=1"/>
+        <mct:UniformGrid MaxColumns="1">
+            <BoxView BackgroundColor="Red" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Green" WidthRequest="25" HeightRequest="25"/>
+            <BoxView BackgroundColor="Yellow" WidthRequest="25" HeightRequest="25"/>
+        </mct:UniformGrid>
+    </VerticalStackLayout>
 </pages:BasePage>

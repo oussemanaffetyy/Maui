@@ -14,6 +14,7 @@ public partial class SnackbarPage : BasePage
 {
 	const string _displayCustomSnackbarText = "Display a Custom Snackbar, Anchored to this Button";
 	const string _dismissCustomSnackbarText = "Dismiss Custom Snackbar";
+
 	readonly IReadOnlyList<Color> _colors = typeof(Colors)
 		.GetFields(BindingFlags.Static | BindingFlags.Public)
 		.ToDictionary(c => c.Name, c => (Color)(c.GetValue(null) ?? throw new InvalidOperationException()))
