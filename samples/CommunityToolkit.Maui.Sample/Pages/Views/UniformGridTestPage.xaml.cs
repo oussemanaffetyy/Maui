@@ -43,12 +43,14 @@ public partial class UniformGridTestPage : BasePage
 			WidthRequest = heightRequest,
 			Color = randomColor
 		});
-
-		UniformGrid_MaxRows2MaxColumns2.Children.Add(new BoxView
+		var boxView = new BoxView
 		{
 			HeightRequest = widthRequest,
 			WidthRequest = heightRequest,
 			Color = randomColor
-		});
+		};
+		Grid.SetRow(boxView, 1);
+		Grid.SetColumn(boxView, 1);
+		UniformGrid_MaxRows2MaxColumns2.Children.Add(boxView);
 	}
 }
